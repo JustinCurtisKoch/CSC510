@@ -1,9 +1,21 @@
+# CSC510 Foundations of Artificial Intelligence
+# Module 8: Portfolio Milestone
+# Data Preprocessing Script
+
+# ------------------------------
+# Imports
+# ------------------------------
 import pandas as pd
 
-# Load the original dataset
+# ------------------------------
+# 1. Load the Original Dataset
+# ------------------------------
 df = pd.read_csv("digital_marketing_campaign_dataset.csv")
 
-# Define core features (must-have columns)
+# ------------------------------
+# 2. Select Core Features
+# ------------------------------
+# Define essential features to retain
 core_features = [
     "CampaignChannel",
     "CampaignType",
@@ -16,12 +28,20 @@ core_features = [
     "Conversion"
 ]
 
-# Keep only the core features (drop everything else)
-core_dataframe = df[core_features]
+# Keep only the selected features
+core_df = df[core_features]
 
-# Save as a new CSV (clone with trimmed fields)
-core_dataframe.to_csv("preprocessed_portfolio_milestone.csv", index=False)
+# ------------------------------
+# 3. Save Trimmed Dataset
+# ------------------------------
+core_df.to_csv("preprocessed_portfolio_milestone.csv", index=False)
 
-print("Trimmed dataset saved as preprocessed_portfolio_milestone.csv")
-print("Shape of trimmed dataset:", core_dataframe.shape)
-print(core_dataframe.head())
+# ------------------------------
+# 4. Output Summary
+# ------------------------------
+print("\n========== PREPROCESSING SUMMARY ==========\n")
+print("Trimmed dataset saved as: preprocessed_portfolio_milestone.csv")
+print(f"Shape of trimmed dataset: {core_df.shape}")
+print("\nPreview of data:\n")
+print(core_df.head())
+print("\n========== END OF SUMMARY ==========")
