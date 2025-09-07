@@ -1,5 +1,4 @@
-# CSC510 Foundations of Artificial Intelligence
-# Module 8: Portfolio Milestone
+
 # AI-Powered Marketing Channel Attribution Tool
 
 # ------------------------------
@@ -101,6 +100,7 @@ log_reg_smote = LogisticRegression(max_iter=1000, solver="liblinear")
 log_reg_smote.fit(X_train_res, y_train_res)
 
 y_pred_lr_smote = log_reg_smote.predict(X_test)
+y_pred_proba_smote = log_reg_smote.predict_proba(X_test)[:, 1]
 
 # ------------------------------
 # 6. ROC and Precision-Recall Curves
@@ -188,6 +188,7 @@ print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_lr))
 
 print("\n=== Logistic Regression with SMOTE ===")
 print(f"Accuracy: {accuracy_score(y_test, y_pred_lr_smote):.4f}")
+print(f"ROC AUC: {roc_auc_score(y_test, y_pred_proba_smote):.4f}")
 print("Classification Report:\n", classification_report(y_test, y_pred_lr_smote))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_lr_smote))
 
